@@ -35,46 +35,26 @@ requests, ultimately helping save lives by ensuring timely blood availability.
 (^) The database consists of the following main tables organized into categories:
 
 ### 4.1 Users & Roles (User-based Inheritance)
-
-```
-Table Description
-```
-
-```
-Users Parent table storing common fields: userID, name, email, passwordHash, phone,
-address, userType, registrationDate
-Donor Inherits from Users; adds bloodGroup, dateOfBirth, gender, weight,
-medicalHistory, isEligible
-Hospital Inherits from Users; adds licenseNo, hospitalType, emergencyContact
-Employee Inherits from Users; adds jobTitle, department, hireDate
-Admin Inherits from Users; adds securityLevel
-LabTech Inherits from Users; adds certificationNo
+Users - Parent table storing common fields: userID, name, email, passwordHash, phone, address, userType, registrationDate
+Donor - Inherits from Users; adds bloodGroup, dateOfBirth, gender, weight, medicalHistory, isEligible
+Hospital - Inherits from Users; adds licenseNo, hospitalType, emergencyContact
+Employee - Inherits from Users; adds jobTitle, department, hireDate
+Admin - Inherits from Users; adds securityLevel
+LabTech - Inherits from Users; adds certificationNo
 ```
 ### 4.2 Inventory & Donation Camps
-
-```
-Table Description
-blood_inventory Stores blood units with bloodGroup, quantityML, expiryDate, status, isSafe
-donationCamp Manages donation camp details including campName, location, startDate,
-endDate, organizerID
+blood_inventory - Stores blood units with bloodGroup, quantityML, expiryDate, status, isSafe
+donationCamp - Manages donation camp details including campName, location, startDate, endDate, organizerID
 ```
 ### 4.3 Records, Appointments & Requests
-
-```
-Table Description
-DonationRecord Logs each donation with donor info, blood group, quantity, test results, and
-approval status
-Appointment Schedules donor appointments at camps
-BloodRequest Tracks hospital requests for blood with urgency and status (Pending, Approved,
-Fulfilled, Rejected)
+DonationRecord - Logs each donation with donor info, blood group, quantity, test results, and approval status
+Appointment - Schedules donor appointments at camps
+BloodRequest - Tracks hospital requests for blood with urgency and status (Pending, Approved, Fulfilled, Rejected)
 ```
 ### 4.4 Support Systems
-
-```
-Table Description
-Notification Stores user notifications (SMS, Email, InApp)
-System_log Logs admin actions (login, user creation, request approval, inventory updates)
-Blood_report Stores generated administrative reports
+Notification - Stores user notifications (SMS, Email, InApp)
+System_log - Logs admin actions (login, user creation, request approval, inventory updates)
+Blood_report - Stores generated administrative reports
 ```
 
 ### 4.5 Sequences & Triggers
@@ -150,27 +130,11 @@ The system has been tested with:
 
 ### 9. Challenges And Solutions
 
-#### Challenge^ Solution^
-
-#### Managing inherited user types^ Implemented a parent Users table with foreign keys
-
-```
-from role-specific tables
-```
-#### Ensuring unique email addresses^ Added UNIQUE constraint on email in Users table^
-
-#### Handling sequential IDs across sessions^ Used Oracle sequences with BEFORE INSERT
-
-```
-triggers
-```
-#### Connecting Oracle with Python Flask^ Used oracle dB^ library with Instant Client^
-
-#### Calculating total blood bags^ Used SQL SUM (quantityML)/450 to convert ml to
-
-```
-standard bags
-```
+Managing inherited user types → Implemented a parent Users table with foreign keys from role-specific tables
+Ensuring unique email addresses → Added UNIQUE constraint on email in Users table
+Handling sequential IDs across sessions → Used Oracle sequences with BEFORE INSERT triggers
+Connecting Oracle with Python Flask → Used oracledb library with Instant Client
+Calculating total blood bags → Used SQL SUM(quantityML)/450 to convert ml to standard bags
 
 ## 10. Conclusion
 
