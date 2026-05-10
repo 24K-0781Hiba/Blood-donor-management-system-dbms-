@@ -60,10 +60,10 @@ Blood_report - Stores generated administrative reports;
 
 ### 4.5 Sequences & Triggers
 
-```
+`
 Auto-increment triggers are implemented for all primary keys using sequences (e.g., user_seq, inv_seq,
 req_seq, don_rec_seq, etc
-```
+`
 ### VISUALIZATION OF ENTITY RELATIONSHIP DIAGRAM
 
 ### 5. System Features and Functionality
